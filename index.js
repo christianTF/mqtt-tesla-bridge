@@ -7,6 +7,8 @@ const mqtt_helpers = require('homeautomation-js-lib/mqtt_helpers.js')
 
 // Config
 var topic_prefix = process.env.TOPIC_PREFIX
+var mqtt_user = process.env.MQTT_USER
+var mqtt_pass = process.env.MQTT_PASS
 
 if (_.isNil(topic_prefix)) {
 	logging.warn('TOPIC_PREFIX not set, not starting')
@@ -14,6 +16,9 @@ if (_.isNil(topic_prefix)) {
 }
 
 var mqttOptions = {}
+mqttOptions['username'] = mqtt_user
+mqttOptions['password'] = mqtt_pass
+
 
 var shouldRetain = process.env.MQTT_RETAIN
 
